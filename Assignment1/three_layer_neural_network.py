@@ -23,7 +23,7 @@ def plot_decision_boundary(predict, x, y):
     plt.show()
 
 
-class ThreeLayerNetwork:
+class NeuralNetwork:
     def __init__(self, input_dim = 2, hidden_dim = 3, output_dim = 2, activation_type = 'tanh', regularization = .01, seed = 0):
         np.random.seed(seed)
 
@@ -78,7 +78,7 @@ class ThreeLayerNetwork:
 
     def back_propagation(self, a1, y):
         delta3 = self.a3 - y
-        delta2 = self.W3.T @ delta3 * self.activation_derivative(self.z2)
+        delta2 = (self.W3.T @ delta3) * self.activation_derivative(self.z2)
 
         d_b2 = np.sum(delta2, axis = 1, keepdims = True) / len(a1)
         d_w2 = np.einsum('ik, jk -> ij', delta2, a1) / len(a1)
@@ -113,9 +113,9 @@ def main():
     a1 = a1.T
     y = np.array([[i == 0, i == 1] for i in y]).T
 
-    network = ThreeLayerNetwork(input_dim = 2, hidden_dim = 3, output_dim = 2, activation_type = 'sigmoid', regularization = .0, seed = 0)
+    network = NeuralNetwork(input_dim = 2, hidden_dim = 10, output_dim = 2, activation_type = 'relu', regularization = .0, seed = 0)
 
-    network.train(a1, y, train_rate = .001, num_passes = 100000, print_loss = True, print_rate = 1000)
+    network.train(a1, y, train_rate = .9, num_passes = 100000, print_loss = True, print_rate = 1000)
 
     network.visualize_decision_boundary(a1.T, y[1])
 
