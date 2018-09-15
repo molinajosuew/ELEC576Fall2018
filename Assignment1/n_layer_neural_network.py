@@ -38,8 +38,8 @@ class DeepNeuralNetwork(object):
         self.z = dict()
 
     def feed_forward(self, a1):
-        a1 = np.array(a1)
-        self.z[2] = self.w[2] @ a1 + self.b[2]
+        self.a[1] = np.array(a1)
+        self.z[2] = self.w[2] @ self.a[1] + self.b[2]
 
         for i in range(2, len(self.dimensions)):
             self.a[i] = self.activation(self.z[i])
@@ -93,7 +93,7 @@ class DeepNeuralNetwork(object):
             d_w, d_b = self.back_propagation(a1, y)
 
             for j in range(2, len(self.dimensions) + 1):
-                d_w[j] += self.regularization * self.w[j]
+                # d_w[j] += self.regularization * self.w[j]
                 self.b[j] -= train_rate * d_b[j]
                 self.w[j] -= train_rate * d_w[j]
 
@@ -109,15 +109,19 @@ class DeepNeuralNetwork(object):
 
 
 def main():
-    a1, y = generate_data(quantity = 1000, seed = 0, noise = .01)
+    a1, y = generate_data(quantity = 1000, seed = 0, noise = .09)
 
     a1 = a1.T
     y = np.array([[i == 0, i == 1] for i in y]).T
 
     network = DeepNeuralNetwork([2, 10, 2], 'relu', 0, 0)
-    network.train(a1, y, 0.0001, 10000000, True, 1000)
+    network.train(a1, y, .01, 100000, True, 100)
 
     plot_decision_boundary(lambda x: network.predict(x.T), a1.T, y[1])
+
+    # X, y = generate_data(1000, 0, .09)
+    # plt.scatter(X[:, 0], X[:, 1], s = 40, c = y, cmap = plt.cm.Spectral)
+    # plt.show()
 
 
 if __name__ == '__main__':

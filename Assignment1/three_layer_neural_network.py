@@ -35,9 +35,9 @@ class NeuralNetwork:
 
         self.regularization = regularization
 
-        self.W2 = 2 * np.random.random([self.hidden_dimension, self.input_dimension]) - 1
+        self.w2 = 2 * np.random.random([self.hidden_dimension, self.input_dimension]) - 1
         self.b2 = 2 * np.random.random([self.hidden_dimension, 1]) - 1
-        self.W3 = 2 * np.random.random([self.output_dimension, self.hidden_dimension]) - 1
+        self.w3 = 2 * np.random.random([self.output_dimension, self.hidden_dimension]) - 1
         self.b3 = 2 * np.random.random([self.output_dimension, 1]) - 1
 
         self.z2 = None
@@ -63,10 +63,10 @@ class NeuralNetwork:
             return x > 0
 
     def feed_forward(self, a1):
-        self.z2 = self.W2 @ a1 + self.b2
+        self.z2 = self.w2 @ a1 + self.b2
         self.a2 = self.activation(self.z2)
 
-        self.z3 = self.W3 @ self.a2 + self.b3
+        self.z3 = self.w3 @ self.a2 + self.b3
         self.a3 = np.exp(self.z3) / np.sum(np.exp(self.z3), axis = 0)
 
     def calculate_loss(self, a1, y):
@@ -78,12 +78,12 @@ class NeuralNetwork:
 
     def back_propagation(self, a1, y):
         delta3 = self.a3 - y
-        delta2 = (self.W3.T @ delta3) * self.activation_derivative(self.z2)
+        delta2 = self.w3.T @ delta3 * self.activation_derivative(self.z2)
 
-        d_b2 = np.sum(delta2, axis = 1, keepdims = True) / len(a1)
-        d_w2 = np.einsum('ik, jk -> ij', delta2, a1) / len(a1)
-        d_b3 = np.sum(delta3, axis = 1, keepdims = True) / len(a1)
-        d_w3 = np.einsum('ik, jk -> ij', delta3, self.a2) / len(a1)
+        d_b2 = np.sum(delta2, axis = 1, keepdims = True) / len(a1[0])
+        d_w2 = np.einsum('ik, jk -> ij', delta2, a1) / len(a1[0])
+        d_b3 = np.sum(delta3, axis = 1, keepdims = True) / len(a1[0])
+        d_w3 = np.einsum('ik, jk -> ij', delta3, self.a2) / len(a1[0])
 
         return d_b2, d_w2, d_b3, d_w3
 
@@ -92,13 +92,13 @@ class NeuralNetwork:
             self.feed_forward(a1)
             d_b2, d_w2, d_b3, d_w3 = self.back_propagation(a1, y)
 
-            d_w3 += self.regularization * self.W3
-            d_w2 += self.regularization * self.W2
+            d_w3 += self.regularization * self.w3
+            d_w2 += self.regularization * self.w2
 
             self.b2 -= train_rate * d_b2
-            self.W2 -= train_rate * d_w2
+            self.w2 -= train_rate * d_w2
             self.b3 -= train_rate * d_b3
-            self.W3 -= train_rate * d_w3
+            self.w3 -= train_rate * d_w3
 
             if print_loss and i % print_rate == 0:
                 print(f'{i}: {self.calculate_loss(a1, y)}')
