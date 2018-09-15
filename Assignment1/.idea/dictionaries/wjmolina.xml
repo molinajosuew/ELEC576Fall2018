@@ -2,6 +2,7 @@
   <dictionary name="wjmolina">
     <words>
       <w>relu</w>
+      <w>softplus</w>
       <w>tanh</w>
     </words>
   </dictionary>

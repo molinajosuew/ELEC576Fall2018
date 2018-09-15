@@ -24,8 +24,8 @@ def plot_decision_boundary(predictor, x, y):
 
 
 class DeepNeuralNetwork(object):
-    def __init__(self, dimensions, activation_type, regularization, seed):
-        np.random.seed(seed)
+    def __init__(self, dimensions, activation_type, regularization, random_seed):
+        np.random.seed(random_seed)
 
         self.dimensions = np.array(dimensions)
         self.activation_type = activation_type
@@ -53,7 +53,13 @@ class DeepNeuralNetwork(object):
         elif self.activation_type == 'sigmoid':
             return 1 / (1 + np.exp(- x))
         elif self.activation_type == 'relu':
-            return x * (x > 0)
+            return (x > 0) * x
+        elif self.activation_type == 'gaussian':
+            return np.exp(- x ** 2)
+        elif self.activation_type == 'sinusoid':
+            return np.sin(x)
+        elif self.activation_type == 'softplus':
+            return np.log(1 + np.exp(x))
 
     def activation_derivative(self, x):
         if self.activation_type == 'tanh':
@@ -63,6 +69,12 @@ class DeepNeuralNetwork(object):
             return y * (1 - y)
         elif self.activation_type == 'relu':
             return x > 0
+        elif self.activation_type == 'gaussian':
+            return - 2 * x * self.activation(x)
+        elif self.activation_type == 'sinusoid':
+            return np.cos(x)
+        elif self.activation_type == 'softplus':
+            return (1 + np.exp(- x)) ** - 1
 
     @staticmethod
     def soft_max(x):
@@ -93,7 +105,7 @@ class DeepNeuralNetwork(object):
             d_w, d_b = self.back_propagation(a1, y)
 
             for j in range(2, len(self.dimensions) + 1):
-                # d_w[j] += self.regularization * self.w[j]
+                d_w[j] += self.regularization * self.w[j]
                 self.b[j] -= train_rate * d_b[j]
                 self.w[j] -= train_rate * d_w[j]
 
@@ -109,19 +121,36 @@ class DeepNeuralNetwork(object):
 
 
 def main():
-    a1, y = generate_data(quantity = 1000, seed = 0, noise = .09)
+    # Make Moons
 
+    # a1, y = generate_data(quantity = 1000, seed = 0, noise = .1)
+    #
+    # a1 = a1.T
+    # y = np.array([[i == 0, i == 1] for i in y]).T
+    #
+    # network = DeepNeuralNetwork([2, 10, 2], 'relu', 0, 0)
+    # network.train(a1, y, .1, 10000, True, 100)
+    #
+    # plot_decision_boundary(lambda x: network.predict(x.T), a1.T, y[1])
+
+    # Make Circles
+
+    a1, y = datasets.make_circles(n_samples = 1000, shuffle = True, noise = .05, random_state = None, factor = 0.8)
     a1 = a1.T
     y = np.array([[i == 0, i == 1] for i in y]).T
 
-    network = DeepNeuralNetwork([2, 10, 2], 'relu', 0, 0)
-    network.train(a1, y, .01, 100000, True, 100)
+    network = DeepNeuralNetwork([2, 15, 2], 'sinusoid', 0, 0)
+    network.train(a1, y, .1, 10000, True, 100)
 
-    plot_decision_boundary(lambda x: network.predict(x.T), a1.T, y[1])
-
-    # X, y = generate_data(1000, 0, .09)
-    # plt.scatter(X[:, 0], X[:, 1], s = 40, c = y, cmap = plt.cm.Spectral)
-    # plt.show()
+    x_min, x_max = a1.T[:, 0].min() - .5, a1.T[:, 0].max() + .5
+    y_min, y_max = a1.T[:, 1].min() - .5, a1.T[:, 1].max() + .5
+    h = .01
+    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+    z = network.predict(np.c_[xx.ravel(), yy.ravel()].T)
+    z = z.reshape(xx.shape)
+    plt.contourf(xx, yy, z, cmap = plt.cm.Spectral)
+    plt.scatter(a1.T[:, 0], a1.T[:, 1], c = y[1], cmap = plt.cm.Spectral)
+    plt.show()
 
 
 if __name__ == '__main__':
