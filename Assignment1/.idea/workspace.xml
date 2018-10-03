@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="91838d94-fe95-4a27-8950-e1edd4138c0c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/dcn mnist 2.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/wjmolina.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/wjmolina.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dcn mnist.py" beforeDir="false" afterPath="$PROJECT_DIR$/dcn mnist.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/n_layer_neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/n_layer_neural_network.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/three_layer_neural_network.py" beforeDir="false" afterPath="$PROJECT_DIR$/three_layer_neural_network.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -51,35 +55,44 @@
     <session id="1031416336">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="20" />
+          <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
-          <entry key="project.open.time.6" value="3" />
-          <entry key="project.open.time.7" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.open.time.6" value="10" />
+          <entry key="project.open.time.7" value="4" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="20" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="22" />
+          <entry key="directory" value="1" />
+          <entry key="png" value="279" />
+          <entry key="py" value="68" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="21" />
+          <entry key="Image" value="279" />
+          <entry key="PLAIN_TEXT" value="1" />
+          <entry key="Python" value="67" />
           <entry key="Scratch" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="590" />
-          <entry key="dummy" value="73" />
-          <entry key="py" value="4906" />
+          <entry key="Python Console" value="1189" />
+          <entry key="dummy" value="82" />
+          <entry key="py" value="7994" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="73" />
-          <entry key="Python" value="4937" />
+          <entry key="PLAIN_TEXT" value="82" />
+          <entry key="Python" value="8624" />
           <entry key="Scratch" value="559" />
         </counts>
       </usages-collector>
@@ -87,16 +100,24 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/n_layer_neural_network.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dcn mnist.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1661">
-              <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+            <state relative-caret-position="-1188">
               <folding>
-                <element signature="e#0#18#0" expanded="true" />
-                <marker date="1537047868602" expanded="true" signature="756:761" ph="..." />
-                <marker date="1537047868602" expanded="true" signature="4357:4362" ph="..." />
-                <marker date="1537047868602" expanded="true" signature="5452:5454" ph="..." />
+                <element signature="e#22#45#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dcn mnist 2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="16" column="56" selection-start-line="16" selection-end-line="16" selection-end-column="56" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,9 +134,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>for</find>
-      <find>nn_</find>
-      <find>log</find>
       <find>a1 = a1.T</find>
       <find>!!!</find>
       <find>.T</find>
@@ -138,6 +156,14 @@
       <find>d_w2</find>
       <find>print</find>
       <find>#</find>
+      <find>self.a[len(self.dimensions)]</find>
+      <find>DeepNeuralNetwork</find>
+      <find>main</find>
+      <find>callba</find>
+      <find>results</find>
+      <find>feed</find>
+      <find>self.back_propagation</find>
+      <find>def activation_ty</find>
     </findStrings>
     <replaceStrings>
       <replace>len(y[0])</replace>
@@ -157,18 +183,20 @@
         <option value="$PROJECT_DIR$/three_layer_nn.py" />
         <option value="$PROJECT_DIR$/three_layer_network.py" />
         <option value="$PROJECT_DIR$/threelayernetwork.py" />
-        <option value="$PROJECT_DIR$/three_layer_neural_network.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/dcn mnist.py" />
+        <option value="$PROJECT_DIR$/venv/cannibal.py" />
+        <option value="$PROJECT_DIR$/three_layer_neural_network.py" />
         <option value="$PROJECT_DIR$/n_layer_neural_network.py" />
+        <option value="$PROJECT_DIR$/cannibal.py" />
+        <option value="$PROJECT_DIR$/dcn mnist 2.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="240" />
-    <option name="y" value="131" />
-    <option name="width" value="1440" />
-    <option name="height" value="788" />
+    <option name="x" value="4" />
+    <option name="width" value="1272" />
+    <option name="height" value="696" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -214,8 +242,8 @@
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Python" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/dcn mnist.py" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/three_layer_neural_network.py" />
+    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="PyConsoleOptionsProvider">
     <option name="myPythonConsoleState">
@@ -224,6 +252,11 @@
         <option name="myModuleName" value="assignment_1" />
       </console-settings>
     </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -237,8 +270,29 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.n_layer_neural_network">
+  <component name="RunManager" selected="Python.ELEC5762018">
     <configuration name="ELEC5762018" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="assignment_1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dcn mnist 2.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="cannibal" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="assignment_1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -259,7 +313,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="n_layer_neural_network" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="n_layer_neural_network (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="assignment_1" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -272,6 +326,27 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/n_layer_neural_network.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="n_layer_neural_network" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="assignment_1" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/three_layer_neural_network.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -305,11 +380,15 @@
       <item itemvalue="Python.ELEC5762018" />
       <item itemvalue="Python.scratch" />
       <item itemvalue="Python.n_layer_neural_network" />
+      <item itemvalue="Python.cannibal" />
+      <item itemvalue="Python.n_layer_neural_network (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.n_layer_neural_network" />
         <item itemvalue="Python.ELEC5762018" />
+        <item itemvalue="Python.cannibal" />
+        <item itemvalue="Python.n_layer_neural_network (1)" />
+        <item itemvalue="Python.n_layer_neural_network" />
         <item itemvalue="Python.scratch" />
       </list>
     </recent_temporary>
@@ -328,15 +407,33 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1050" extended-state="6" />
-    <editor active="true" />
+    <frame x="-4" y="0" width="1928" height="1054" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.12111638" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.103212215" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946752" visible="true" weight="0.20086393" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" weight="0.24514039" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39955357" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.3174946" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.5005325" side_tool="true" weight="0.2012987" />
+      <window_info anchor="bottom" id="Python Console" order="10" weight="0.3261339" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973376" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12111638" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32900432" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946752" weight="0.27969763" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -348,89 +445,100 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24973376" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/venv/lib64/python3.6/site-packages/numpy/core/einsumfunc.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="1227" selection-start-line="1227" selection-end-line="1227" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/n_layer_perceptron.py" />
-    <entry file="file://$PROJECT_DIR$/ThreeLayerNetwork.py" />
-    <entry file="file://$PROJECT_DIR$/NLayerNetwork.py" />
-    <entry file="file://$USER_HOME$/.PyCharmCE2018.2/system/python_stubs/2075463528/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="237">
-          <caret line="5243" column="8" selection-start-line="5243" selection-start-column="8" selection-end-line="5243" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/images/02010000.png" />
+    <entry file="file://$PROJECT_DIR$/images/02000102.png" />
+    <entry file="file://$PROJECT_DIR$/images/02000101.png" />
+    <entry file="file://$PROJECT_DIR$/images/02000100.png" />
+    <entry file="file://$PROJECT_DIR$/images/02000002.png" />
+    <entry file="file://$PROJECT_DIR$/images/02000001.png" />
+    <entry file="file://$PROJECT_DIR$/images/02000000.png" />
+    <entry file="file://$PROJECT_DIR$/images/01020102.png" />
+    <entry file="file://$PROJECT_DIR$/images/01020101.png" />
+    <entry file="file://$PROJECT_DIR$/images/01020100.png" />
+    <entry file="file://$PROJECT_DIR$/images/01020002.png" />
+    <entry file="file://$PROJECT_DIR$/images/01020001.png" />
+    <entry file="file://$PROJECT_DIR$/images/01020000.png" />
+    <entry file="file://$PROJECT_DIR$/images/01010102.png" />
+    <entry file="file://$PROJECT_DIR$/images/01010101.png" />
+    <entry file="file://$PROJECT_DIR$/images/01010100.png" />
+    <entry file="file://$PROJECT_DIR$/images/01010002.png" />
+    <entry file="file://$PROJECT_DIR$/images/01010001.png" />
+    <entry file="file://$PROJECT_DIR$/images/01010000.png" />
+    <entry file="file://$PROJECT_DIR$/images/01000102.png" />
+    <entry file="file://$PROJECT_DIR$/images/01000101.png" />
+    <entry file="file://$PROJECT_DIR$/images/00010102.png" />
+    <entry file="file://$PROJECT_DIR$/images/01000100.png" />
+    <entry file="file://$PROJECT_DIR$/images/01000002.png" />
+    <entry file="file://$PROJECT_DIR$/images/01000001.png" />
+    <entry file="file://$PROJECT_DIR$/images/01000000.png" />
+    <entry file="file://$PROJECT_DIR$/images/00020102.png" />
+    <entry file="file://$PROJECT_DIR$/images/00020101.png" />
+    <entry file="file://$PROJECT_DIR$/images/00020100.png" />
+    <entry file="file://$PROJECT_DIR$/images/00020002.png" />
+    <entry file="file://$PROJECT_DIR$/images/00020001.png" />
+    <entry file="file://$PROJECT_DIR$/images/00020000.png" />
+    <entry file="file://$PROJECT_DIR$/images/00000000.png" />
+    <entry file="file://$PROJECT_DIR$/images/00010002.png" />
+    <entry file="file://$PROJECT_DIR$/images/00010001.png" />
+    <entry file="file://$PROJECT_DIR$/images/00010000.png" />
+    <entry file="file://$PROJECT_DIR$/images/00000102.png" />
+    <entry file="file://$PROJECT_DIR$/images/00000101.png" />
+    <entry file="file://$PROJECT_DIR$/images/00000100.png" />
+    <entry file="file://$PROJECT_DIR$/images/00000002.png" />
+    <entry file="file://$PROJECT_DIR$/images/00000001.png" />
+    <entry file="file://$PROJECT_DIR$/images/00010101.png" />
+    <entry file="file://$PROJECT_DIR$/images/00010100.png" />
+    <entry file="file://$PROJECT_DIR$/images/d00010102.png" />
+    <entry file="file://$PROJECT_DIR$/images/d02010100.png" />
+    <entry file="file://$PROJECT_DIR$/images/d02010102.png" />
     <entry file="file://$PROJECT_DIR$/three_layer_neural_network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="82" column="68" selection-start-line="82" selection-start-column="68" selection-end-line="82" selection-end-column="68" />
+        <state relative-caret-position="99">
+          <caret line="9" column="28" selection-start-line="9" selection-start-column="28" selection-end-line="9" selection-end-column="28" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
+    <entry file="file://$PROJECT_DIR$/n_layer_neural_network.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="51" lean-forward="true" selection-start-line="16" selection-start-column="51" selection-end-line="16" selection-end-column="51" />
+        <state relative-caret-position="407">
+          <caret line="37" column="14" selection-start-line="37" selection-start-column="14" selection-end-line="37" selection-end-column="14" />
           <folding>
-            <element signature="e#0#29#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dcn mnist.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1524">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="-1188">
           <folding>
-            <element signature="e#27#36#0" expanded="true" />
+            <element signature="e#22#45#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib64/python3.6/site-packages/matplotlib/pyplot.py">
+    <entry file="file://$PROJECT_DIR$/venv/lib64/python3.6/site-packages/keras/engine/base_layer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="3474" selection-start-line="3471" selection-start-column="25" selection-end-line="3474" selection-end-column="67" />
+        <state relative-caret-position="224">
+          <caret line="310" selection-start-line="310" selection-end-line="310" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib64/python3.6/site-packages/matplotlib/__init__.py">
+    <entry file="file://$PROJECT_DIR$/dcn mnist 2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="1863" column="60" lean-forward="true" selection-start-line="1863" selection-start-column="60" selection-end-line="1863" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/venv/lib64/python3.6/site-packages/matplotlib/axes/_axes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="4292" selection-start-line="4292" selection-end-line="4292" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/n_layer_neural_network.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1661">
-          <caret line="30" column="46" lean-forward="true" selection-start-line="30" selection-start-column="46" selection-end-line="30" selection-end-column="46" />
+        <state relative-caret-position="192">
+          <caret line="16" column="56" selection-start-line="16" selection-end-line="16" selection-end-column="56" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
-            <marker date="1537047868602" expanded="true" signature="756:761" ph="..." />
-            <marker date="1537047868602" expanded="true" signature="4357:4362" ph="..." />
-            <marker date="1537047868602" expanded="true" signature="5452:5454" ph="..." />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

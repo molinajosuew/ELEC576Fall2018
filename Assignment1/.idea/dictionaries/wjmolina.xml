@@ -1,9 +1,15 @@
 <component name="ProjectDictionaryState">
   <dictionary name="wjmolina">
     <words>
+      <w>crossentropy</w>
+      <w>datasets</w>
+      <w>leakyrelu</w>
       <w>relu</w>
+      <w>requ</w>
+      <w>softmax</w>
       <w>softplus</w>
       <w>tanh</w>
+      <w>tensorboard</w>
     </words>
   </dictionary>
 </component>

@@ -1,3 +1,5 @@
+import time
+from n_layer_neural_network import DeepNeuralNetwork
 import numpy as np
 import matplotlib.pyplot as plt
 from sklearn import datasets
@@ -5,119 +7,51 @@ from sklearn import datasets
 f__author__ = 'Wilfredo J. Molina'
 
 
-def generate_data(quantity = 20, seed = 0, noise = .02):
-    np.random.seed(seed)
-    x, y = datasets.make_moons(quantity, noise = noise)
-    return x, y
-
-
-def plot_decision_boundary(predict, x, y):
-    x_min, x_max = x[:, 0].min() - .5, x[:, 0].max() + .5
-    y_min, y_max = x[:, 1].min() - .5, x[:, 1].max() + .5
-    h = .01
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
-    z = predict(np.c_[xx.ravel(), yy.ravel()])
-    z = z.reshape(xx.shape)
-    plt.contourf(xx, yy, z, cmap = plt.cm.Spectral)
-    plt.scatter(x[:, 0], x[:, 1], c = y, cmap = plt.cm.Spectral)
-    plt.show()
-
-
-class NeuralNetwork:
-    def __init__(self, input_dim = 2, hidden_dim = 3, output_dim = 2, activation_type = 'tanh', regularization = .01, seed = 0):
-        np.random.seed(seed)
-
-        self.input_dimension = input_dim
-        self.hidden_dimension = hidden_dim
-        self.output_dimension = output_dim
-
-        self.activation_type = activation_type
-
-        self.regularization = regularization
-
-        self.w2 = 2 * np.random.random([self.hidden_dimension, self.input_dimension]) - 1
-        self.b2 = 2 * np.random.random([self.hidden_dimension, 1]) - 1
-        self.w3 = 2 * np.random.random([self.output_dimension, self.hidden_dimension]) - 1
-        self.b3 = 2 * np.random.random([self.output_dimension, 1]) - 1
-
-        self.z2 = None
-        self.a2 = None
-        self.z3 = None
-        self.a3 = None
-
-    def activation(self, x):
-        if self.activation_type == 'tanh':
-            return np.tanh(x)
-        elif self.activation_type == 'sigmoid':
-            return 1 / (1 + np.exp(- x))
-        elif self.activation_type == 'relu':
-            return x * (x > 0)
-
-    def activation_derivative(self, x):
-        if self.activation_type == 'tanh':
-            return np.cosh(x) ** - 2
-        elif self.activation_type == 'sigmoid':
-            y = self.activation(x)
-            return y * (1 - y)
-        elif self.activation_type == 'relu':
-            return x > 0
-
-    def feed_forward(self, a1):
-        self.z2 = self.w2 @ a1 + self.b2
-        self.a2 = self.activation(self.z2)
-
-        self.z3 = self.w3 @ self.a2 + self.b3
-        self.a3 = np.exp(self.z3) / np.sum(np.exp(self.z3), axis = 0)
-
-    def calculate_loss(self, a1, y):
-        return - np.sum(y * np.log(self.a3)) / len(a1)
-
-    def predict(self, a1):
-        self.feed_forward(a1)
-        return np.argmax(self.a3, axis = 0)
-
-    def back_propagation(self, a1, y):
-        delta3 = self.a3 - y
-        delta2 = self.w3.T @ delta3 * self.activation_derivative(self.z2)
-
-        d_b2 = np.sum(delta2, axis = 1, keepdims = True) / len(a1[0])
-        d_w2 = np.einsum('ik, jk -> ij', delta2, a1) / len(a1[0])
-        d_b3 = np.sum(delta3, axis = 1, keepdims = True) / len(a1[0])
-        d_w3 = np.einsum('ik, jk -> ij', delta3, self.a2) / len(a1[0])
-
-        return d_b2, d_w2, d_b3, d_w3
-
-    def train(self, a1, y, train_rate = .01, num_passes = 10000, print_loss = False, print_rate = 100):
-        for i in range(0, num_passes):
-            self.feed_forward(a1)
-            d_b2, d_w2, d_b3, d_w3 = self.back_propagation(a1, y)
-
-            d_w3 += self.regularization * self.w3
-            d_w2 += self.regularization * self.w2
-
-            self.b2 -= train_rate * d_b2
-            self.w2 -= train_rate * d_w2
-            self.b3 -= train_rate * d_b3
-            self.w3 -= train_rate * d_w3
-
-            if print_loss and i % print_rate == 0:
-                print(f'{i}: {self.calculate_loss(a1, y)}')
-
-    def visualize_decision_boundary(self, a1, y):
-        plot_decision_boundary(lambda x: self.predict(x.T), a1, y)
+class NeuralNetwork(DeepNeuralNetwork):
+    def __init__(self, input_dim = 2, hidden_dim = 3, output_dim = 2, activation_type = 'tanh', regularization = 0, random_seed = None):
+        super().__init__([input_dim, hidden_dim, output_dim], activation_type, regularization, random_seed)
 
 
 def main():
-    a1, y = generate_data(quantity = 1000, seed = 0, noise = .01)
+    I = [[0.00, '00'], [.025, '01'], [.075, '02']]
+    J = [['ReLU', 'relu', '00'], ['sigmoid', 'sigmoid', '01'], ['hyperbolic tangent', 'tanh', '02']]
+    K = [['00', lambda x: datasets.make_moons(n_samples = 1000, shuffle = True, noise = x, random_state = None)], ['01', lambda x: datasets.make_circles(n_samples = 1000, shuffle = True, noise = x, random_state = None, factor = 0.75)]]
+    L = [[10, '00'], [20, '01'], [30, '02']]
 
-    a1 = a1.T
-    y = np.array([[i == 0, i == 1] for i in y]).T
+    for l in L:
+        for k in K:
+            for j in J:
+                for i in I:
+                    # Data
 
-    network = NeuralNetwork(input_dim = 2, hidden_dim = 10, output_dim = 2, activation_type = 'relu', regularization = .0, seed = 0)
+                    a1, y = k[1](i[0])
 
-    network.train(a1, y, train_rate = .9, num_passes = 100000, print_loss = True, print_rate = 1000)
+                    # Pre-Processing
 
-    network.visualize_decision_boundary(a1.T, y[1])
+                    a1 = a1.T
+                    y = np.array([[i == 0, i == 1] for i in y]).T
+
+                    # Network
+
+                    network = NeuralNetwork(input_dim = 2, hidden_dim = l[0], output_dim = 2, activation_type = j[1], regularization = 0, random_seed = None)
+                    network.train(a1, y, .1, 100000, True, .2)
+
+                    # Display
+
+                    x_min, x_max = a1.T[:, 0].min() - .5, a1.T[:, 0].max() + .5
+                    y_min, y_max = a1.T[:, 1].min() - .5, a1.T[:, 1].max() + .5
+                    h = .01
+                    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+                    z = network.predict(np.c_[xx.ravel(), yy.ravel()].T)
+                    z = z.reshape(xx.shape)
+                    plt.figure(figsize = (5, 5))
+                    plt.axis('off')
+                    plt.title(j[0] + ', ' + str(l[0]) + ', ' + '{0:.3f}'.format(i[0]))
+                    plt.contourf(xx, yy, z, cmap = plt.cm.Spectral)
+                    plt.scatter(a1.T[:, 0], a1.T[:, 1], c = y[1], cmap = plt.cm.Spectral)
+                    plt.savefig('./images/' + i[1] + j[2] + k[0] + l[1] + '.png')
+                    # plt.show(block = False)
+    # plt.show()
 
 
 if __name__ == '__main__':
