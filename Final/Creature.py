@@ -3,25 +3,32 @@ from DeepNeuralNetwork import DeepNeuralNetwork
 from math import atan, pi, sqrt
 
 
-class Mouse(Entity):
-    def __init__(self, x = 0, y = 0):
-        super().__init__(x = x, y = y, kind = 'mouse')
-        self.brain = DeepNeuralNetwork()
+class Creature(Entity):
+    def __init__(self, x, y, kind, brain_shape):
+        super().__init__(x, y, kind)
+        self.brain = DeepNeuralNetwork(architecture = brain_shape)
         self.prey = None
+        self.predator = None
         self.fitness = 1
 
-    def target_prey(self, prey):
+    def target_prey_and_predator(self, prey, predator):
         self.prey = prey
+        self.predator = predator
 
-    def get_prey_angle(self):
-        if self.prey is None:
-            return 0
+    def get_angle_and_distance(self, entity):
+        if entity is None:
+            return [[0], [0]]
 
-        opposite = self.y - self.prey.y
-        adjacent = self.prey.x - self.x
+        opposite = self.y - entity.y
+        adjacent = entity.x - self.x
+
+        distance = sqrt(opposite ** 2 + adjacent ** 2)
 
         if adjacent == 0:
-            return 0
+            if opposite >= 0:
+                return [[.25], [distance]]
+            else:
+                return [[.75], [distance]]
 
         angle = atan(opposite / adjacent)
 
@@ -32,12 +39,11 @@ class Mouse(Entity):
         elif adjacent > 0 >= opposite:
             angle = 2 * pi + angle
 
-        angle /= 2 * pi
-
-        return angle
+        return [[angle / (2 * pi)], [distance]]
 
     def move(self, width, height):
-        direction = self.brain.predict([[self.get_prey_angle()]])
+        prey_angle = self.get_angle_and_distance(self.prey)[0]
+        direction = self.brain.predict([prey_angle] + self.get_angle_and_distance(self.predator))
 
         if direction == 0:
             self.x = (self.x + 1) % (width + 1)
