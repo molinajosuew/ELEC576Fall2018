@@ -9,5 +9,5 @@ GUI(Engine(world_width = 1000,
            n_cats = 10,
            n_generations = inf,
            cross_over_rate = .5,
-           mutation_rate = .01,
+           mutation_rate = .05,
            file_name = 'mice_generation.txt'))

@@ -21,7 +21,7 @@ class Engine(object):
         self.capture_radius = { 'mouse': 20, 'cat': 30 }
         self.generation_life = 10000
         self.generation_time = 0
-        self.brain_shape = [3, 16, 16, 16, 8]
+        self.brain_shape = [2, 32, 8]
 
         self.entities = []
 

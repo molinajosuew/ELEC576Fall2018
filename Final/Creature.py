@@ -43,7 +43,8 @@ class Creature(Entity):
 
     def move(self, width, height):
         prey_angle = self.get_angle_and_distance(self.prey)[0]
-        direction = self.brain.predict([prey_angle] + self.get_angle_and_distance(self.predator))
+        predator_angle = self.get_angle_and_distance(self.predator)[0]
+        direction = self.brain.predict([prey_angle] + [predator_angle])
 
         if direction == 0:
             self.x = (self.x + 1) % (width + 1)
