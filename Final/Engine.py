@@ -228,14 +228,14 @@ class Engine(object):
 
     def save_stats(self):
         file = open('./data/' + self.stats_file + '.txt', 'a')
-        file.write('mouse')
+        file.write('mouse' + '\n')
 
         for entity in self.entities:
             if entity.kind == 'mouse':
                 file.write(str(entity.fitness) + ',')
 
         file.write('\n')
-        file.write('cat')
+        file.write('cat' + '\n')
 
         for entity in self.entities:
             if entity.kind == 'cat':
