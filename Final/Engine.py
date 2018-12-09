@@ -8,20 +8,20 @@ from numpy import array
 
 
 class Engine(object):
-    def __init__(self, world_width, world_height, n_mice, n_cheese, n_cats, n_generations, cross_over_rate, mutation_rate, chromosomes_file = None, stats_file = None):
+    def __init__(self, world_width, world_height, n_mice, n_cheese, n_cats, n_generations, generation_life, cross_over_rate, mutation_rate, chromosomes_file = None, stats_file = None):
         self.world_width = world_width
         self.world_height = world_height
         self.n_mice = n_mice
         self.n_cheese = n_cheese
         self.n_cats = n_cats
         self.n_generations = n_generations
+        self.generation_life = generation_life
         self.cross_over_rate = cross_over_rate
         self.mutation_rate = mutation_rate
         self.chromosomes_file = chromosomes_file
         self.stats_file = stats_file
 
         self.capture_radius = { 'mouse': 20, 'cat': 30 }
-        self.generation_life = 10000
         self.generation_time = 0
         self.brain_shape = [2, 32, 8]
 
