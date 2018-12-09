@@ -1,8 +1,10 @@
 def get_mice_and_cat_stats():
     raw_data = open('./data/stats_file.txt', 'r').readlines()
     data = []
-    for i in range(0, len(raw_data)):
-        data.append(list(map(int, raw_data[i].replace('\n', '')[:-1].split(','))))
+    for i in range(1, len(raw_data), 2):
+        processed_line = raw_data[i].replace('\n', '')[:-1].split(',')
+        if processed_line != ['']:
+            data.append(list(map(int, processed_line)))
     return data
 
 
