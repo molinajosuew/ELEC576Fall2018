@@ -85,12 +85,12 @@ class Engine(object):
             self.save_stats()
 
             sorted_generations = self.sort_generation()
-            self.entities = [sorted_generations['mouse'][0], sorted_generations['mouse'][1], sorted_generations['cat'][0], sorted_generations['cat'][1]]
+            self.entities = []
 
-            self.entities[0].fitness = 1
-            self.entities[1].fitness = 1
-            self.entities[2].fitness = 1
-            self.entities[3].fitness = 1
+            for key in sorted_generations:
+                for i in range(0, 2):
+                    sorted_generations[key][i].fitness = 1
+                    self.entities.append(sorted_generations[key][i])
 
             for i in range(0, self.n_mice - 2):
                 self.entities.append(self.create_child(self.roulette_wheel(sorted_generations['mouse']), self.roulette_wheel(sorted_generations['mouse'])))
