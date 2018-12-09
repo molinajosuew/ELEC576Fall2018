@@ -10,4 +10,5 @@ GUI(Engine(world_width = 1000,
            n_generations = inf,
            cross_over_rate = .5,
            mutation_rate = .05,
-           file_name = 'mice_generation.txt'))
+           chromosomes_file = 'chromosomes_file',
+           stats_file = 'stats_file'))

@@ -8,7 +8,7 @@ from numpy import array
 
 
 class Engine(object):
-    def __init__(self, world_width, world_height, n_mice, n_cheese, n_cats, n_generations, cross_over_rate, mutation_rate, file_name = None):
+    def __init__(self, world_width, world_height, n_mice, n_cheese, n_cats, n_generations, cross_over_rate, mutation_rate, chromosomes_file = None, stats_file = None):
         self.world_width = world_width
         self.world_height = world_height
         self.n_mice = n_mice
@@ -17,6 +17,8 @@ class Engine(object):
         self.n_generations = n_generations
         self.cross_over_rate = cross_over_rate
         self.mutation_rate = mutation_rate
+        self.chromosomes_file = chromosomes_file
+        self.stats_file = stats_file
 
         self.capture_radius = { 'mouse': 20, 'cat': 30 }
         self.generation_life = 10000
@@ -28,24 +30,26 @@ class Engine(object):
         for i in range(0, n_cheese):
             self.entities.append(Entity(x = randint(0, self.world_width), y = randint(0, self.world_height), kind = 'cheese'))
 
-        if file_name is None:
-            print('no file given: creating new file')
-            for i in range(0, n_mice):
-                self.entities.append(Creature(x = randint(0, self.world_width), y = randint(0, self.world_height), kind = 'mouse', brain_shape = self.brain_shape))
-
-            for i in range(0, n_cats):
-                self.entities.append(Creature(x = randint(0, self.world_width), y = randint(0, self.world_height), kind = 'cat', brain_shape = self.brain_shape))
-        else:
-            print('loading file')
-            file = open(file_name, 'r')
+        try:
+            file = open('./data/' + chromosomes_file + '.txt', 'r')
             lines = file.readlines()
             file.close()
+
+            print('loading chromosomes')
 
             for i in range(0, len(lines), 3):
                 entity = Creature(x = randint(0, world_width), y = randint(0, world_height), kind = lines[i].replace('\n', ''), brain_shape = self.brain_shape)
                 entity.brain.W = eval(lines[i + 1])
                 entity.brain.b = eval(lines[i + 2])
                 self.entities.append(entity)
+        except IOError:
+            print('creating chromosomes')
+
+            for i in range(0, n_mice):
+                self.entities.append(Creature(x = randint(0, self.world_width), y = randint(0, self.world_height), kind = 'mouse', brain_shape = self.brain_shape))
+
+            for i in range(0, n_cats):
+                self.entities.append(Creature(x = randint(0, self.world_width), y = randint(0, self.world_height), kind = 'cat', brain_shape = self.brain_shape))
 
         for entity in self.entities:
             if entity.kind == 'mouse' or entity.kind == 'cat':
@@ -78,9 +82,15 @@ class Engine(object):
     def tick(self):
         if self.generation_time == self.generation_life:
             self.generation_time = 0
+            self.save_stats()
 
             sorted_generations = self.sort_generation()
             self.entities = [sorted_generations['mouse'][0], sorted_generations['mouse'][1], sorted_generations['cat'][0], sorted_generations['cat'][1]]
+
+            self.entities[0].fitness = 1
+            self.entities[1].fitness = 1
+            self.entities[2].fitness = 1
+            self.entities[3].fitness = 1
 
             for i in range(0, self.n_mice - 2):
                 self.entities.append(self.create_child(self.roulette_wheel(sorted_generations['mouse']), self.roulette_wheel(sorted_generations['mouse'])))
@@ -95,7 +105,7 @@ class Engine(object):
                 if entity.kind == 'mouse' or entity.kind == 'cat':
                     self.assign_prey_and_predator(entity)
 
-            self.save_generation('mice_generation')
+            self.save_chromosomes()
 
             return False
         else:
@@ -196,8 +206,8 @@ class Engine(object):
 
         creature.target_prey_and_predator(prey, predator)
 
-    def save_generation(self, file_name):
-        file = open(file_name + '_backup.txt', 'w')
+    def save_chromosomes(self):
+        file = open('./data/' + self.chromosomes_file + '_backup.txt', 'w')
         lines = []
 
         for entity in self.entities:
@@ -208,4 +218,26 @@ class Engine(object):
 
         file.writelines(lines)
         file.close()
-        os.rename(file_name + '_backup.txt', file_name + '.txt')
+
+        try:
+            os.remove('./data/' + self.chromosomes_file + '.txt')
+        except IOError:
+            pass
+
+        os.rename('./data/' + self.chromosomes_file + '_backup.txt', './data/' + self.chromosomes_file + '.txt')
+
+    def save_stats(self):
+        file = open('./data/' + self.stats_file + '.txt', 'a')
+
+        for entity in self.entities:
+            if entity.kind == 'mouse':
+                file.write(str(entity.fitness) + ',')
+
+        file.write('\n')
+
+        for entity in self.entities:
+            if entity.kind == 'cat':
+                file.write(str(entity.fitness) + ',')
+
+        file.write('\n')
+        file.close()
