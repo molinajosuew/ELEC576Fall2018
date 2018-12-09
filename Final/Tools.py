@@ -13,21 +13,22 @@ def average_numbers(numbers):
     return s / len(numbers)
 
 
-mice_and_cats = get_mice_and_cat_stats()
+mice_and_cat_stats = get_mice_and_cat_stats()
+f = 1
 
 print('[', end = '')
-for i in range(0, len(mice_and_cats), 2):
-    for j in range(0, len(mice_and_cats[i])):
-        print(mice_and_cats[i][j], end = '')
-        if j + 1 < len(mice_and_cats[i]):
+for i in range(f, len(mice_and_cat_stats), 2):
+    for j in range(0, len(mice_and_cat_stats[i])):
+        print(mice_and_cat_stats[i][j], end ='')
+        if j + 1 < len(mice_and_cat_stats[i]):
             print(',', end = '')
-    if i + 2 < len(mice_and_cats):
+    if i + 2 < len(mice_and_cat_stats):
         print(';', end = '')
 print(']')
 
 print('[', end = '')
-for i in range(0, len(mice_and_cats), 2):
-    print(average_numbers(mice_and_cats[i]), end = '')
-    if i + 2 < len(mice_and_cats[i]):
+for i in range(f, len(mice_and_cat_stats), 2):
+    print(average_numbers(mice_and_cat_stats[i]), end ='')
+    if i + 2 < len(mice_and_cat_stats):
         print(',', end = '')
 print(']')
