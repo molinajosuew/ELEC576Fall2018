@@ -3,8 +3,10 @@ import pygame
 
 class GUI(object):
     def __init__(self, engine, show):
-        pygame.init()
-        screen = pygame.display.set_mode((engine.world_width, engine.world_height))
+        if show:
+            pygame.init()
+            screen = pygame.display.set_mode((engine.world_width, engine.world_height))
+
         generation = 1
 
         while generation < engine.n_generations:
