@@ -1,5 +1,5 @@
-def get_mice_and_cat_stats():
-    raw_data = open('./data/stats_file_1.txt', 'r').readlines()
+def get_mice_and_cat_stats(filename):
+    raw_data = open('./data/' + filename, 'r').readlines()
     data = []
     for i in range(1, len(raw_data), 2):
         processed_line = raw_data[i].replace('\n', '')[:-1].split(',')
@@ -17,7 +17,7 @@ def average_numbers(numbers):
     return s / len(numbers)
 
 
-mice_and_cat_stats = get_mice_and_cat_stats()
+mice_and_cat_stats = get_mice_and_cat_stats('no_cats_s.txt')
 F = 0
 
 print('[', end = '')
