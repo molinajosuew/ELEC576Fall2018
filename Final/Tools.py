@@ -1,5 +1,5 @@
 def get_mice_and_cat_stats():
-    raw_data = open('./data/stats_file.txt', 'r').readlines()
+    raw_data = open('./data/stats_file_1.txt', 'r').readlines()
     data = []
     for i in range(1, len(raw_data), 2):
         processed_line = raw_data[i].replace('\n', '')[:-1].split(',')
