@@ -13,4 +13,4 @@ GUI(Engine(world_width = 1000,
            mutation_rate = .01,
            chromosomes_file = 'chromosomes_file',
            stats_file = 'stats_file'),
-    show = True)
+    show = False)
