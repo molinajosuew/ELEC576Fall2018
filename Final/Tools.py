@@ -17,7 +17,7 @@ def average_numbers(numbers):
     return s / len(numbers)
 
 
-mice_and_cat_stats = get_mice_and_cat_stats('no_cats_s.txt')
+mice_and_cat_stats = get_mice_and_cat_stats('cats_s.txt')
 F = 0
 
 print('[', end = '')
