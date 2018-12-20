@@ -21,7 +21,7 @@ mice_and_cat_stats = get_mice_and_cat_stats('cats_s.txt')
 F = 0
 
 print('[', end = '')
-for i in range(F, len(mice_and_cat_stats), 2):
+for i in range(F, len(mice_and_cat_stats), 20):
     for j in range(0, len(mice_and_cat_stats[i])):
         print(mice_and_cat_stats[i][j], end ='')
         if j + 1 < len(mice_and_cat_stats[i]):
@@ -31,7 +31,7 @@ for i in range(F, len(mice_and_cat_stats), 2):
 print(']')
 
 print('[', end = '')
-for i in range(F, len(mice_and_cat_stats), 2):
+for i in range(F, len(mice_and_cat_stats), 20):
     print(average_numbers(mice_and_cat_stats[i]), end ='')
     if i + 2 < len(mice_and_cat_stats):
         print(',', end = '')
